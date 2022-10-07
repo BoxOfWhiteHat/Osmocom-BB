@@ -3,9 +3,8 @@
 
 # BoxOfWhiteHat 
 
-# Run sudo bash instal.sh and copie Osmocom-BB TO /etc/  using sudo cp -r Osmocom-BB   /etc/
+ #Run sudo bash install.sh and copie Osmocom-BB to /usr/src/ using sudo cp -r Osmocom-BB /usr/src
 
 
 
-
-#INSTALL.SH WILL INSTALL CalybsoBTS IN /USR/BIN  SO YOU NO NEED ALL TIME TO RUN CALYBSOBTS FROM /etc/Osmocom-BB 
+#INSTALL.SH will install CalybsoBTS in /usr/bin  so you no need all time to run CALYBSOBTS from /usr/src/Osmocom-BB 
