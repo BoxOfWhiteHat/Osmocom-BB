@@ -1,0 +1,251 @@
+#!/bin/python3
+
+# BoxOfWhiteHat #
+
+
+import termcolor
+from termcolor import colored , cprint
+import sys
+import os
+import time
+
+
+
+
+def CATCHER():
+   #os.system("sudo pkill osmo-nitb")
+   #os.system("sudo pkill osmo-bts-trx")
+   os.system("clear")
+   print("")
+   os.system("pyfiglet  -f banner Osmocom-bb  ")
+   Y=("Y")
+   y=("y")
+   print("")
+   cprint('[+] RUN OSMOCOMBB    Y / N ','white',attrs=['bold'])
+   print("")
+   os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+   OSMO=input(termcolor.colored('[*] OSMOCOM-BB >>   ','red',attrs=['bold']))
+   if OSMO == y or OSMO == Y :
+
+                                      cprint('[*] MOTOROLA SERIE SUPPORTED : C115 C139 C123 C118 ... ','white',attrs=['bold'])
+                                      cprint('[*] PLEASE CONNECT YOUR PHONE WITH TTL-USB AND PLUG TTL-USB IN YOUR LAPTOP ... ','red',attrs=['bold','reverse'])
+                                      print("")
+                                      cprint('[*] NOTICE :' ,'yellow',attrs=['bold'])
+                                      cprint('             CalybsoBTS FIRMWARE (trx.highram.bin)  ','green',attrs=['bold'])
+                                      Layer1=("1")
+                                      C1=("c115")
+                                      C2=("c123")
+                                      C3=("c118")
+                                      C4=("c139")
+                                      Trx=("2")
+                                      Rssi=("3")
+                                      print("")
+                                      cprint('[*] FLASH > [1]Layer1.highram.bin  | [2]Trx.highram.bin  | [3]rssi.highram.bin   ','blue',attrs=['bold'])
+                                      print("")
+                                      os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                      MV=input(termcolor.colored(' [*] MOTOROLA SERIE >>   ','white',attrs=['bold']))
+                                      print("")
+                                      OsmocomFlash=input(termcolor.colored(' [*] MOTOROLA FLACHER >> ','white',attrs=['bold']))
+                                      print("")
+                                      if OsmocomFlash == Layer1 and MV==C1 or MV==C2 or MV ==C3:
+                                         Y=("Y")
+                                         y=("y")
+                                         os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                         print("")
+                                         attached=input(termcolor.colored(' YOUR PHONE IS ATTACHED TO YOUR LAPTOP  Y / n :  ','blue',attrs=['bold']))
+                                         if attached == Y or attached == y:
+                                            if os.path.exists("/dev/ttyUSB0"):
+                                               cprint('[+] TTL USB IS CONNECTED :/dev/ttyUSB0','green',attrs=['bold'])
+                                               print("")
+                                               cprint('[*] OSMOCOMBB (NOW BUSH POWER BUTTON OF MOTOROLA) ... ','cyan',attrs=['bold'])
+                                               print("")
+                                               os.system("cd /etc/Osmocom-BB/Bin  && sudo  xterm -bg black -fg yellow  -e ./osmocon -s /tmp/osmocom_l2 -m c123xor -p /dev/ttyUSB0 -c  /etc/Osmocom-BB/Firmware/e88/layer1.highram.bin &    ")
+                                               time.sleep(1)
+                                               os.system("cd /etc/Osmocom-BB/Bin && sudo  xterm -bg black -fg yellow  -e ./cell_log   &  ")
+                                               time.sleep(2)
+                                               arfcn=input(termcolor.colored('      [*] CCCH_SCAN (ARFCN ) [*] >> ','red',attrs=['bold']))
+                                               pathccch=("cd /etc/Osmocom-BB/Bin ")
+                                               cond=("sudo xterm -bg black -fg yellow  -e  ./ccch_scan -i 127.0.0.1 -a")
+                                               et=("&&")
+                                               detch=("&")
+                                               if arfcn == arfcn :
+                                                  os.system(pathccch + "\t" + et + "\t" + cond + arfcn + "\t"+ detch)  
+                                                  time.sleep(1)
+                                                  os.system("cd /etc/Osmocom-BB/Bin && sudo  xterm -bg black -fg yellow  -e  ./mobile --debug DCS:DNB:DPLMN:DRR:DMM:DSIM:DCC:DMNCC:DSS:DLSMS:DPAG:DSUM:DSAP:DGPS:DMOB:DPRIM:DLUA  -i 127.0.0.1 -c  /etc/Osmocom-BB/Config/mobile.cfg -D &")
+                                                  time.sleep(2)
+                                                  os.system("clear")
+                                                  print("")
+                                                  os.system("sudo pyfiglet  -f banner  Osmocom-bb  ")
+                                                  print("")
+                                                  os.system('sudo bash /etc/color2')
+                                                  os.system("sudo telnet 127.0.0.1 4247 ")
+                                                  CATCHER()
+                                            else:
+                                                    print("") 
+                                                    cprint('[-]IS NOT CONNECTED CHECK YOUR USB TTL : /dev/ttyUSB0','red',attrs=['bold']) 
+                                                    time.sleep(6)
+                                                    CATCHER
+                                         if OsmocomFlash == Layer1 and  MV ==C4:
+                                             Y=("Y")
+                                             y=("y")
+                                             os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                             print("")
+                                             attached=input(termcolor.colored(' YOUR PHONE IS ATTACHED TO YOUR LAPTOP  Y / n :  ','blue',attrs=['bold']))
+                                             if attached == Y or attached == y:
+                                                if os.path.exists("/dev/ttyUSB0"):
+                                                   cprint('[+] TTL USB IS CONNECTED :/dev/ttyUSB0','green',attrs=['bold'])
+                                                   print("")
+                                                   cprint('[*] OSMOCOMBB (NOW BUSH POWER BUTTON OF MOTOROLA) ... ','cyan',attrs=['bold'])
+                                                   print("")
+                                                   os.system("cd /etc/Osmocom-BB/Bin  && sudo  xterm -bg black -fg yellow  -e ./osmocon -s /tmp/osmocom_l2 -m c123xor -p /dev/ttyUSB0 -c  /etc/Osmocom-BB/Firmware/e86/layer1.highram.bin &    ")
+                                                   time.sleep(1)
+                                                   os.system("cd /etc/Osmocom-BB/Bin && sudo  xterm -bg black -fg yellow  -e ./cell_log   &  ")
+                                                   time.sleep(2)
+                                                   arfcn=input(termcolor.colored('      [*] CCCH_SCAN (ARFCN ) [*] >> ','red',attrs=['bold']))
+                                                   pathccch=("cd /etc/Osmocom-BB/Bin ")
+                                                   cond=("sudo xterm -bg black -fg yellow  -e  ./ccch_scan -i 127.0.0.1 -a")
+                                                   et=("&&")
+                                                   detch=("&")
+                                                   if arfcn == arfcn :
+                                                      os.system(pathccch + "\t" + et + "\t" + cond + arfcn + "\t"+ detch)  
+                                                      time.sleep(1)
+                                                      os.system("cd /etc/Osmocom-BB/Bin && sudo  xterm -bg black -fg yellow  -e  ./mobile --debug DCS:DNB:DPLMN:DRR:DMM:DSIM:DCC:DMNCC:DSS:DLSMS:DPAG:DSUM:DSAP:DGPS:DMOB:DPRIM:DLUA  -i 127.0.0.1 -c /etc/Osmocom-BB/Config/mobile.cfg -D ")
+                                                      time.sleep(2)
+                                                      os.system("clear")
+                                                      print("")
+                                                      os.system("sudo pyfiglet  -f banner  Osmocom-bb  ")
+                                                      print("")
+                                                      os.system('sudo bash /etc/color2')
+                                                      os.system("sudo telnet 127.0.0.1 4247 ")
+                                                      CATCHER()
+                                             else:
+                                                    print("") 
+                                                    cprint('[-]IS NOT CONNECTED CHECK YOUR USB TTL : /dev/ttyUSB0','red',attrs=['bold']) 
+                                                    time.sleep(6)
+                                                    CATCHER        
+                                         elif OsmocomFlash == Trx and MV==C1 or MV==C2 or MV ==C3:
+                                              Y=("Y")
+                                              y=("y")
+                                              attached=input(termcolor.colored(' YOUR PHONE IS ATTACHED TO YOUR LAPTOP  Y / n :  ','blue',attrs=['bold']))
+                                              print("")
+                                              if attached == Y or attached == y:
+                                                 if os.path.exists("/dev/ttyUSB0"):
+                                                    cprint('[+] TTL USB IS CONNECTED : /dev/ttyUSB0','green',attrs=['bold'])
+                                                    print("")
+                                                    os.system("cd /etc/Osmocom-BB/Config && sudo   xterm -fg white -bg black -e osmo-nitb  -c openbsc.cfg -l hlr.sqilte3 -P -C & ")
+                                                    os.system("cd /etc/Osmocom-BB/Config && sudo xterm -fg white -bg black -e osmo-bts-trx -c osmo-bts.cfg  & ")
+                                                    print("")
+                                                    os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                                    cprint('[*] OSMOCOMBB (NOW BUSH POWER BUTTON OF MOTOROLA) ... ','cyan',attrs=['bold'])
+                                                    os.system("cd /etc/Osmocom-BB/Bin && sudo  xterm -bg black -fg yellow  -e ./osmocon  -s /tmp/osmocom_l2 -m c123xor -p /dev/ttyUSB0 -c /etc/Osmocom-BB/Firmware/e88/trx.highram.bin    &  ")
+                                                    time.sleep(1)
+                                                    tranpath=("cd /etc/Osmocom-BB/Bin/ ")
+                                                    cond=("sudo xterm -bg black -fg yellow  -e  ./transceiver  -r 99 -e 1 -a 54 -a")
+                                                    ett=("&&")
+                                                    detche=("&")
+                                                    time.sleep(2)
+                                                    os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                                    sync=input(termcolor.colored(' [*] TRANSCEIVER [*] >> ','yellow',attrs=['bold']))    
+                                                    if sync == sync:
+                                                       os.system(tranpath + "\t" + ett + "\t" + cond + sync + "\t"+ detche)
+                                                       os.system("clear")
+                                                       print("")
+                                                       os.system("pyfiglet  -f banner [+] Osmocom-bb [+] ")
+                                                       print("")
+                                                       os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                                       os.system("cd  /etc/Osmocom-BB/Bin && xterm -bg black -fg yellow  -e  ./mobile --debug DCS:DNB:DPLMN:DRR:DMM:DSIM:DCC:DMNCC:DSS:DLSMS:DPAG:DSUM:DSAP:DGPS:DMOB:DPRIM:DLUA  -i 127.0.0.1 -c  /etc/Osmocom-BB/Config/mobile.cfg  -D &")
+                                                       os.system("sudo telnet 127.0.0.1 4247 ")
+                                                       CATCHER()
+                                                    else:
+                                                          print("")
+                                                          cprint('[-]IS NOT CONNECTED CHECK YOUR USB TTL : /dev/ttyUSB0','red',attrs=['bold']) 
+                                                          time.sleep(6)
+                                                          CATCHER
+                                     
+                                         elif OsmocomFlash == Trx and MV == C4:
+                                              if os.path.exists("/dev/ttyUSB0"):
+                                                 cprint('[+] TTL USB IS CONNECTED : /dev/ttyUSB0','green',attrs=['bold'])
+                                                 print("")
+                                                 os.system("cd /root/cellular-network-configs/osmocom/CalybsoBts-Config &&  xterm -fg white -bg black -e osmo-nitb  -c openbsc.cfg -l hlr.sqilte3 -P -C & ")
+                                                 os.system("cd /root/cellular-network-configs/osmocom/CalybsoBts-Config && xterm -fg white -bg black -e osmo-bts-trx -c osmo-bts.cfg  & ")
+                                                 print("")
+                                                 os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                                 cprint('[*] OSMOCOMBB (NOW BUSH POWER BUTTON OF MOTOROLA) ... ','cyan',attrs=['bold'])
+                                                 os.system("cd /etc/Osmocom-BB/Bin && sudo  xterm -bg black -fg yellow  -e ./osmocon  -s /tmp/osmocom_l2 -m c140xor -p /dev/ttyUSB0 -c /etc/Osmocom-BB/Firmware/e86/trx.highram.bin   &  ")
+                                                 time.sleep(1)
+                                                 tranpath=("cd /etc/Osmocom-BB/Bin/ ")
+                                                 cond=("xterm -bg black -fg yellow  -e  ./transceiver  -r 99 -e 1 -a 54 -a")
+                                                 ett=("&&")
+                                                 detche=("&")
+                                                 time.sleep(2)
+                                                 os.system('sudo bash /etc/Osmocom-BB/Bin/tcolor2')
+                                                 sync=input(termcolor.colored(' [*] TRANSCEIVER [*] >> ','yellow',attrs=['bold']))    
+                                                 if sync == sync:
+                                                    os.system(tranpath + "\t" + ett + "\t" + cond + sync + "\t"+ detche)
+                                                    os.system("clear")
+                                                    print("")
+                                                    os.system("pyfiglet  -f future [+] Osmocom-bb [+] ")
+                                                    print("")
+                                                    os.system('bash /etc/Osmocom-BB/Bin/tcolor2')
+                                                    os.system("cd  /etc/Osmocom-BB/Bin  && sudo  xterm -bg black -fg yellow  -e  ./mobile --debug DCS:DNB:DPLMN:DRR:DMM:DSIM:DCC:DMNCC:DSS:DLSMS:DPAG:DSUM:DSAP:DGPS:DMOB:DPRIM:DLUA  -i 127.0.0.1 -c mobile.cfg -D ")
+                                                    os.system("telnet 127.0.0.1 4247 ")
+                                                    CATCHER()
+                                              else:
+                                                    print("")
+                                                    cprint('[-]IS NOT CONNECTED CHECK YOUR USB TTL : /dev/ttyUSB0','red',attrs=['bold']) 
+                                                    time.sleep(6)
+                                                    CATCHER()
+
+                                         elif OsmocomFlash == Rssi and MV == C1 or MV == C2 or MV == C3:
+                                              Y=("Y")
+                                              y=("y")
+                                              attached=input(termcolor.colored(' YOUR PHONE IS ATTACHED TO YOUR LAPTOP  Y / n :  ','blue',attrs=['bold']))
+                                              if attached == Y or attached == y:
+                                                 if os.path.exists("/dev/ttyUSB0"):
+                                                    print("")
+                                                    cprint('[+] TTL USB IS CONNECTED : /dev/ttyUSB0','green',attrs=['bold'])
+                                                    print("")
+                                                    os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                                    print("")
+                                                    cprint('[*] AFTER SEE NEW SMALL TERMINAL OPENED ( BUSH POWER BUTTON OF MOTOROLA) ...  ','blue',attrs=['bold'])
+                                                    time.sleep(8)
+                                                    os.system("cd /etc/Osmocom-BB/Bin && sudo xterm -bg black -fg yellow  -e ./osmocon -m c123xor -p /dev/ttyUSB0 -c /etc/Osmocom-BB/Firmware/e88/rssi.highram.bin  &  ")
+                                                    time.sleep(1)
+                                                    CATCHER()
+                                                 else:
+                                                       print("")
+                                                       cprint('[-]IS NOT CONNECTED CHECK YOUR USB TTL : /dev/ttyUSB0','red',attrs=['bold']) 
+                                                       time.sleep(6)
+                                                       CATCHER()
+
+                                         elif OsmocomFlash == Rssi and MV == C4:
+                                               Y=("Y")
+                                               y=("y")
+                                               attached=input(termcolor.colored(' YOUR PHONE IS ATTACHED TO YOUR LAPTOP  Y / n :  ','blue',attrs=['bold']))
+                                               if attached == Y or attached == y:
+                                                  if os.path.exists("/dev/ttyUSB0"):
+                                                     print("")
+                                                     cprint('[+] TTL USB IS CONNECTED : /dev/ttyUSB0','green',attrs=['bold'])
+                                                     print("")
+                                                     os.system('sudo bash /etc/Osmocom-BB/Bin/color2')
+                                                     print("")
+                                                     cprint('[*] AFTER SEE NEW SMALL TERMINAL OPENED ( BUSH POWER BUTTON OF MOTOROLA) ...  ','blue',attrs=['bold'])
+                                                     time.sleep(8)
+                                                     os.system("cd /etc/Osmocom-BB/Bin && sudo xterm -bg black -fg yellow  -e ./osmocon -m c123xor -p /dev/ttyUSB0 -c /etc/Osmocom-BB/Firmware/e86/rssi.highram.bin  &  ")
+                                                     time.sleep(1)
+                                                     CATCHER()
+                                                  else:
+                                                        print("")
+                                                        cprint('[-]IS NOT CONNECTED CHECK YOUR USB TTL : /dev/ttyUSB0','red',attrs=['bold']) 
+                                                        time.sleep(6)
+                                                        CATCHER()
+                                         else:
+                                                  CATCHER()
+                                      else:
+                                            cprint('[*] YOU HAVE FORGOT TO FLASH MOTOROLA (CHOOSE YOUR BIN)   ... ','blue',attrs=['bold'])
+                                            time.sleep(6)
+                                            CATCHER()
+       
+   else:
+          cprint('[+] SEE YOU LATER ...  ','white',attrs=['bold'])
+CATCHER()
